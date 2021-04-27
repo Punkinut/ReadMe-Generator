@@ -13,9 +13,10 @@ let questions = [
 "Explain how to INSTALL your application (press arrow keys to navigate through steps)",
 "Explain how to USE your application (press arrow keys to navigate through steps)",
 "Which code of conduct would you like to include in your contribution section? ",
-"Please add some final instructions on how to run tests on your application (if not applicable press enter)"];
+"Please add some final instructions on how to run tests on your application (if not applicable press enter)",
+"What is your GitHub url?"];
 
-const [ q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, ] = questions;
+const [ q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13] = questions;
 
 enquirer
     .prompt([
@@ -23,6 +24,11 @@ enquirer
             type: 'input',
             message: q1,
             name: "project"
+        },
+        {
+            type: 'input',
+            message: q13,
+            name: "githubURL"
         },
         {
             type: 'input',
@@ -92,29 +98,36 @@ enquirer
         },
     ])
     .then((response) => {
-        const { project, github, email, license, desc1, desc2, desc3, desc4, install, use, contribution, tests } =  response;
-    
+        const { project, github, email, license, desc1, desc2, desc3, desc4, install, use, contribution, tests, githubURL } =  response;
+        //  If inputs blank omit the section
         let readmeText = `
-        # ${project}
-        ## Description
-        - ${desc1}
-        - ${desc2}
-        - ${desc3}
-        - ${desc4}
-        ## Table of Contents
-        - [Installation](#Installation)
-        - [Usage](#Usage)
-        - [Contribution](#Contribution)
-        - [Questions](#Questions)
-        ## Installation
+# ${project}
+## Description
+- ${desc1}
+- ${desc2}
+- ${desc3}
+- ${desc4}
+## Table of Contents
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Contribution](#Contribution)
+- [Questions](#Questions)
+## Installation
+- ${install.instStep1}
+- ${install.instStep2}
+- ${install.instStep3}
+## Usage
+- ${use.use1}
+- ${use.use2}
+## Contribution
 
-        ## Usage
+## Running Tests
+${tests}
+## Questions
+If you wish to inquire about my application, below is my contact information 👇  
+${github} | ${githubURL}  
+Email | ${email}`
 
-        ##Contribution
-
-        ## Running Tests
-        
-        ## Questions
-        If you wish to inquire about my application, below is my contact information 👇  
-        ${github} | ${email}`
+        fs.writeFile("README.md", readmeText, (err) => 
+        err ? console.log(err) : console.log("Your file has been created!"))
     });
