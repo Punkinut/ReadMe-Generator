@@ -75,8 +75,8 @@ enquirer
             message: q10,
             name: "use",
             choices: [
-                { name: 'use1', message: 'How do I access the main functionality?'},
-                { name: 'use2', message: 'How did you implement this main feature?'},
+                { name: 'use1', message: 'How do I access the main functionality?: '},
+                { name: 'use2', message: 'How did you implement this main feature?: '},
             ]
         },
         {
@@ -92,5 +92,29 @@ enquirer
         },
     ])
     .then((response) => {
-        const { project } =  response;
+        const { project, github, email, license, desc1, desc2, desc3, desc4, install, use, contribution, tests } =  response;
+    
+        let readmeText = `
+        # ${project}
+        ## Description
+        - ${desc1}
+        - ${desc2}
+        - ${desc3}
+        - ${desc4}
+        ## Table of Contents
+        - [Installation](#Installation)
+        - [Usage](#Usage)
+        - [Contribution](#Contribution)
+        - [Questions](#Questions)
+        ## Installation
+
+        ## Usage
+
+        ##Contribution
+
+        ## Running Tests
+        
+        ## Questions
+        If you wish to inquire about my application, below is my contact information 👇  
+        ${github} | ${email}`
     });
