@@ -99,27 +99,43 @@ enquirer
     ])
     .then((response) => {
         const { project, github, email, license, desc1, desc2, desc3, desc4, install, use, contribution, tests, githubURL } =  response;
-        //  If inputs blank omit the section
+        var chosenLicense;
+        var licenseDesc;
+        // Switch statement that decides what license information to display
+        switch (license) {
+            case "MIT License":
+                chosenLicense = "![license](https://img.shields.io/badge/license-MIT-green.svg)"
+                break;
+            case "Apache License 2.0":
+                chosenLicense = "![license](https://img.shields.io/badge/license-Apache-blue.svg)"
+                break;
+            case "GNU General Public License":
+                chosenLicense = "![license](https://img.shields.io/badge/license-GNU-red.svg)"
+                break;
+        };
         let readmeText = `
 # ${project}
+${chosenLicense}
 ## Description
-- ${desc1}
-- ${desc2}
-- ${desc3}
-- ${desc4}
+${desc1}  
+${desc2}  
+${desc3}  
+${desc4}  
 ## Table of Contents
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Contribution](#Contribution)
-- [Questions](#Questions)
+[Installation](#Installation)  
+[Usage](#Usage)  
+[Contribution](#Contribution)  
+[Questions](#Questions)  
 ## Installation
-- ${install.instStep1}
-- ${install.instStep2}
-- ${install.instStep3}
+Step One: ${install.instStep1}  
+Step Two: ${install.instStep2}  
+Step Three: ${install.instStep3}  
 ## Usage
-- ${use.use1}
-- ${use.use2}
+${use.use1}  
+${use.use2}  
 ## Contribution
+
+## License
 
 ## Running Tests
 ${tests}
