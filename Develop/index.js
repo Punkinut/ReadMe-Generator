@@ -1,6 +1,5 @@
 const enquirer = require('enquirer');
 const fs = require('fs');
-const { title } = require('process');
 
 let questions = [
 "What it the title of your project?", 
