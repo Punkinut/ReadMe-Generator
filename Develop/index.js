@@ -10,15 +10,12 @@ let questions = [
 "Why did you build this project?",
 "What problem does it solve?",
 "What did you learn?",
-"Press enter to explain your installation in three steps (press enter)",
-"Step One:",
-"Step Two:",
-"Step Three:",
-"Please provide some steps on how to use this appliaction",
+"Explain how to INSTALL your application (press arrow keys to navigate through steps)",
+"Explain how to USE your application (press arrow keys to navigate through steps)",
 "Which code of conduct would you like to include in your contribution section? ",
 "Please add some final instructions on how to run tests on your application (if not applicable press enter)"];
 
-const [ q1, q2, q3, q4, q5, q6, q7 ] = questions;
+const [ q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, ] = questions;
 
 enquirer
     .prompt([
@@ -47,6 +44,51 @@ enquirer
             type: 'input',
             message: q5,
             name: "desc1"
+        },
+        {
+            type: 'input',
+            message: q6,
+            name: "desc2"
+        },
+        {
+            type: 'input',
+            message: q7,
+            name: "desc3"
+        },
+        {
+            type: 'input',
+            message: q8,
+            name: "desc4"
+        },
+        {
+            type: 'form',
+            message: q9,
+            name: "install",
+            choices: [
+                { name: 'instStep1', message: 'Step One:'},
+                { name: 'instStep2', message: 'Step Two:'},
+                { name: 'instStep3', message: 'Step Three:'}
+            ]
+        },
+        {
+            type: 'form',
+            message: q10,
+            name: "use",
+            choices: [
+                { name: 'use1', message: 'How do I access the main functionality?'},
+                { name: 'use2', message: 'How did you implement this main feature?'},
+            ]
+        },
+        {
+            type: 'select',
+            message: q11,
+            name: "contribution",
+            choices: ["Contributor Covenant", "Citizen Code Of Conduct"]
+        },
+        {
+            type: 'input',
+            message: q12,
+            name: "tests"
         },
     ])
     .then((response) => {
