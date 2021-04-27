@@ -5,7 +5,7 @@ let questions = [
 "What it the title of your project?", 
 "What is your GitHub username?",
 "What is your email?",
-"Which liscence will you require for this repository?",
+"Which license will you require for this repository?",
 "What was your motivation for this task?",
 "Why did you build this project?",
 "What problem does it solve?",
@@ -27,8 +27,28 @@ enquirer
             message: q1,
             name: "project"
         },
+        {
+            type: 'input',
+            message: q2,
+            name: "github"
+        },
+        {
+            type: 'input',
+            message: q3,
+            name: "email"
+        },
+        {
+            type: 'select',
+            message: q4,
+            name: "license",
+            choices: ["MIT License", "Apache License 2.0", "GNU General Public License"]
+        },
+        {
+            type: 'input',
+            message: q5,
+            name: "desc1"
+        },
     ])
     .then((response) => {
         const { project } =  response;
-        console.log(project )
     });
