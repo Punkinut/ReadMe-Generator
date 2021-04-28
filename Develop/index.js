@@ -13,7 +13,7 @@ let questions = [
 "Explain how to INSTALL your application (press arrow keys to navigate through steps)",
 "Explain how to USE your application (press arrow keys to navigate through steps)",
 "Which code of conduct would you like to include in your contribution section? ",
-"Please add some final instructions on how to run tests on your application (if not applicable press enter)",
+"Please add some final instructions on how to run tests on your application",
 "What is your GitHub url?"];
 
 const [ q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13] = questions;
