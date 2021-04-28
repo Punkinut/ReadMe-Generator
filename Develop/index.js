@@ -102,14 +102,13 @@ enquirer
         // Initial variables
         var chosenLicense;
         var licenseDesc;
+        var contributionDesc;
         // Switch statement that decides what license information to display
         switch (license) {
             case "MIT License":
                 chosenLicense = "![license](https://img.shields.io/badge/license-MIT-green.svg)"
                 licenseDesc = 
 `MIT License
-
-Copyright (c) 2021 Tom Doyle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -202,6 +201,36 @@ Some devices are designed to deny users access to install or run modified versio
 Finally, every program is threatened constantly by software patents. States should not allow patents to restrict development and use of software on general-purpose computers, but in those that do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary. To prevent this, the GPL assures that patents cannot be used to render the program non-free. For more information check the license section in this repo.`
                 break;
         };
+        switch (contribution) {
+            case "Contributor Covenant":
+                contributionDesc = 
+`Examples of behavior that contributes to a positive environment for our community include:
+
+Demonstrating empathy and kindness toward other people
+Being respectful of differing opinions, viewpoints, and experiences
+Giving and gracefully accepting constructive feedback
+Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
+Focusing on what is best not just for us as individuals, but for the overall community
+
+Examples of unacceptable behavior include:
+
+The use of sexualized language or imagery, and sexual attention or advances of any kind
+Trolling, insulting or derogatory comments, and personal or political attacks
+Public or private harassment
+Publishing others' private information, such as a physical or email address, without their explicit permission
+Other conduct which could reasonably be considered inappropriate in a professional setting`;
+                break;
+            case "Citizen Code Of Conduct":
+                contributionDesc = 
+`The following behaviors are expected and requested of all community members:
+Participate in an authentic and active way. In doing so, you contribute to the health and longevity of this community.
+Exercise consideration and respect in your speech and actions.
+Attempt collaboration before conflict.
+Refrain from demeaning, discriminatory, or harassing behavior and speech.
+Be mindful of your surroundings and of your fellow participants. Alert community leaders if you notice a dangerous situation, someone in distress, or violations of this Code of Conduct, even if they seem inconsequential.
+Remember that community event venues may be shared with members of the public; please be respectful to all patrons of these locations.`
+                break;
+        }
         let readmeText = `
 # ${project}
 ${chosenLicense}
@@ -223,7 +252,7 @@ Step Three: ${install.instStep3}
 ${use.use1}  
 ${use.use2}  
 ## Contribution
-
+${contributionDesc}
 ## License
 ${licenseDesc}
 ## Running Tests
